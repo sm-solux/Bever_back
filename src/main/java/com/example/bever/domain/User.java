@@ -14,12 +14,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
-    private Long UserID;
+    @Column(name = "userID")
+    private Long userID;
 
     @Column(nullable = false)
-    private String UserEmail;
+    private String userEmail;
 
     @Column(nullable = false)
-    private String UserPw;
+    private String userPw;
 }

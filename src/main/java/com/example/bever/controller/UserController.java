@@ -19,7 +19,7 @@ public class UserController {
     @ResponseBody
     @PostMapping("v1/user/save")
     public RegisterResponseDto register(@RequestBody RegisterRequestDto registerRequestDto){
-        User user = User.builder().UserEmail(registerRequestDto.getEmail()).UserPw(registerRequestDto.getPw()).build();
+        User user = User.builder().userEmail(registerRequestDto.getEmail()).userPw(registerRequestDto.getPw()).build();
         userRepository.save(user);
 
         RegisterResponseDto registerResponseDto = RegisterResponseDto.builder().userID(user.getUserID()).build();
@@ -29,9 +29,10 @@ public class UserController {
     @ResponseBody
     @PostMapping("v1/user/login")
     public String login(@RequestBody  RegisterRequestDto registerRequestDto){
+//        List<User> users = userRepository.findAllByUserEmailAndUserPw(registerRequestDto.getEmail(),registerRequestDto.getPw());
         List<User> users = userRepository.findAllByUserEmailAndUserPw(registerRequestDto.getEmail(),registerRequestDto.getPw());
 
-        if( users.size() == 0 )
+        if( users == null )
             return "fail";
 
         return "success";
