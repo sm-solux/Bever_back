@@ -4,6 +4,7 @@ package com.example.bever.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.ConnectionBuilder;
 import java.time.LocalDateTime;
 
 @Getter
@@ -33,7 +34,7 @@ public class UserRecipe {
     private String recipeContent;
 
     @Column
-    private String rmageLink;
+    private String imageLink;
 
     @Column
     private LocalDateTime recipeDate;
