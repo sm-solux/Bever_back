@@ -14,22 +14,22 @@ import java.time.LocalDateTime;
 public class Community {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PostID")
-    private Long PostID;
+    @Column(name = "postID")
+    private Long postID;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userID")
     private User user;
 
     @Column(nullable = false)
-    private String PostName;
+    private String postName;
 
     @Column(nullable = false)
-    private String PostContent;
+    private String postContent;
 
     @Column
-    private String ImageLink;
+    private String imageLink;
 
     @Column(nullable = false)
-    private LocalDateTime PostDate;
+    private LocalDateTime postDate;
 }

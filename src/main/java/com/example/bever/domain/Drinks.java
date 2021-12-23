@@ -13,19 +13,19 @@ import javax.persistence.*;
 public class Drinks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DrinkID")
+    @Column(name = "drinkID")
     private Long DrinkID;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "DrinkOwnerID")
+    @JoinColumn(name = "drinkOwnerID")
     private DrinkOwners drinkOwners;
 
     @Column
-    private String DrinkName;
+    private String drinkName;
 
     @Column
-    private String DrinkImageLink;
+    private String drinkImageLink;
 
     @Column
-    private Boolean DrinkNew;
+    private Boolean drinkNew;
 }

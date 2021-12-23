@@ -15,27 +15,27 @@ import java.time.LocalDateTime;
 public class UserRecipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "RecipeID")
+    @Column(name = "recipeID")
     private Long RecipeID;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "DrinkID")
+    @JoinColumn(name = "drinkID")
     private Drinks drinks;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userID")
     private User user;
 
     @Column
-    private String RecipeName;
+    private String recipeName;
 
     @Column
-    private String RecipeContent;
+    private String recipeContent;
 
     @Column
-    private String ImageLink;
+    private String rmageLink;
 
     @Column
-    private LocalDateTime RecipeDate;
+    private LocalDateTime recipeDate;
 
 }

@@ -13,16 +13,16 @@ import javax.persistence.*;
 public class Scrap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ScrapID")
+    @Column(name = "scrapID")
     private Long ScrapID;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "userID")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RecipeID")
+    @JoinColumn(name = "recipeID")
     private UserRecipe userRecipe;
 
 }
