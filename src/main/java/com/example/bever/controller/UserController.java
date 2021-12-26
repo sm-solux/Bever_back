@@ -18,7 +18,13 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("v1/user/save")
-    public RegisterResponseDto register(@RequestBody RegisterRequestDto registerRequestDto){
+    public RegisterResponseDto register(@ModelAttribute RegisterRequestDto registerRequestDto){
+        List<User> findbyemail = userRepository.findUsersByUserEmail(registerRequestDto.getEmail());
+        if(findbyemail.size()!=0){
+            RegisterResponseDto registerResponseDto = RegisterResponseDto.builder().userID(findbyemail.get(0).getUserID()).build();
+            return registerResponseDto;
+        }
+
         User user = User.builder().userEmail(registerRequestDto.getEmail()).userPw(registerRequestDto.getPw()).build();
         userRepository.save(user);
 
@@ -28,7 +34,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("v1/user/login")
-    public String login(@RequestBody  RegisterRequestDto registerRequestDto){
+    public String login(@ModelAttribute  RegisterRequestDto registerRequestDto){
 //        List<User> users = userRepository.findAllByUserEmailAndUserPw(registerRequestDto.getEmail(),registerRequestDto.getPw());
         List<User> users = userRepository.findAllByUserEmailAndUserPw(registerRequestDto.getEmail(),registerRequestDto.getPw());
 

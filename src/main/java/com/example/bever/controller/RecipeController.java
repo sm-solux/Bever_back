@@ -19,7 +19,7 @@ public class RecipeController {
     private final RecipeRepository recipeRepository;
 
     @PostMapping("v1/recipe/post")
-    public String post(@RequestBody RecipeSaveRequestDto recipeSaveRequestDto) {
+    public String post(@ModelAttribute RecipeSaveRequestDto recipeSaveRequestDto) {
         Drinks drink = recipeSaveRequestDto.getDrinkID();
         User user = recipeSaveRequestDto.getWriter();
         String recipeName =  recipeSaveRequestDto.getTitle();
