@@ -21,7 +21,7 @@ public class UserController {
     public RegisterResponseDto register(@ModelAttribute RegisterRequestDto registerRequestDto){
         List<User> findbyemail = userRepository.findUsersByUserEmail(registerRequestDto.getEmail());
         if(findbyemail.size()!=0){
-            RegisterResponseDto registerResponseDto = RegisterResponseDto.builder().userID(findbyemail.get(0).getUserID()).build();
+            RegisterResponseDto registerResponseDto = RegisterResponseDto.builder().alreadyExist("User Email already exist").build();
             return registerResponseDto;
         }
 
@@ -34,14 +34,11 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("v1/user/login")
-    public String login(@ModelAttribute  RegisterRequestDto registerRequestDto){
+    public Long login(@ModelAttribute  RegisterRequestDto registerRequestDto){
 //        List<User> users = userRepository.findAllByUserEmailAndUserPw(registerRequestDto.getEmail(),registerRequestDto.getPw());
         List<User> users = userRepository.findAllByUserEmailAndUserPw(registerRequestDto.getEmail(),registerRequestDto.getPw());
 
-        if( users == null )
-            return "fail";
-
-        return "success";
+        return users.get(0).getUserID();
     }
 
 

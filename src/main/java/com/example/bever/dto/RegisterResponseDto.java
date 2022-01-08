@@ -9,4 +9,5 @@ import lombok.*;
 @Builder
 public class RegisterResponseDto {
     private Long userID;
+    private String alreadyExist;
 }
