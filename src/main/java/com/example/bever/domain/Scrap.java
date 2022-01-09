@@ -14,7 +14,7 @@ public class Scrap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "scrapID")
-    private Long ScrapID;
+    private Long scrapID;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -16,7 +16,7 @@ public class UserRecipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recipeID")
-    private Long RecipeID;
+    private Long recipeID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "drinkID")
@@ -33,7 +33,7 @@ public class UserRecipe {
     private String recipeContent;
 
     @Column
-    private String rmageLink;
+    private String imageLink;
 
     @Column
     private LocalDateTime recipeDate;
