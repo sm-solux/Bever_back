@@ -18,11 +18,11 @@ public class UserRecipe {
     @Column(name = "recipeID")
     private Long recipeID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "drinkID")
     private Drinks drinks;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "userID")
     private User user;
 

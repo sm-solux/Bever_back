@@ -14,7 +14,7 @@ public class DrinkOwners {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "drinkOwnerID")
-    private Long DrinkOwnerID;
+    private Long drinkOwnerID;
 
     @Column
     private String drinkOwnerName;

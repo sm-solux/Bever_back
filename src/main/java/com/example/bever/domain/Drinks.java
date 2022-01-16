@@ -14,9 +14,9 @@ public class Drinks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "drinkID")
-    private Long DrinkID;
+    private Long drinkID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "drinkOwnerID")
     private DrinkOwners drinkOwners;
 

@@ -33,7 +33,7 @@ public class CommunityController {
         if(user.size()!=1) {
             return "fail";
         }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
 
         Community community = Community.builder().user(user.get(0)).postName(title)
@@ -49,7 +49,7 @@ public class CommunityController {
         return communityList;
     }
 
-    @GetMapping("v1/community/{userID}")
+    @GetMapping("v1/community")
     public List<Community> getParameters(@RequestParam(name="userID") Long userID) {
         List<User> user = userRepository.findAllByUserID(userID);
 
