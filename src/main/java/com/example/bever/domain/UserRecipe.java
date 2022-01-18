@@ -17,13 +17,13 @@ public class UserRecipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recipeID")
-    private Long RecipeID;
+    private Long recipeID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "drinkID")
     private Drinks drinks;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "userID")
     private User user;
 
