@@ -3,6 +3,7 @@ package com.example.bever.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -26,10 +27,7 @@ public class Calendar {
     private Drinks drinks;
 
     @Column(nullable = false)
-    private String month;
-
-    @Column(nullable = false)
-    private String date;
+    private LocalDateTime date;
 }
 
 

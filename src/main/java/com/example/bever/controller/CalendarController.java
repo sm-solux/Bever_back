@@ -1,7 +1,6 @@
 package com.example.bever.controller;
 
 import com.example.bever.domain.Calendar;
-import com.example.bever.domain.Community;
 import com.example.bever.domain.Drinks;
 import com.example.bever.domain.User;
 import com.example.bever.dto.CalendarPostRequestDto;
@@ -11,11 +10,13 @@ import com.example.bever.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.spi.CalendarDataProvider;
+
+import static java.time.LocalDate.parse;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,8 +31,6 @@ public class CalendarController {
     public String post(@RequestBody CalendarPostRequestDto calendarPostRequestDto) {
         Long userID = calendarPostRequestDto.getUserID();
         Long drinkID = calendarPostRequestDto.getDrinkID();
-//        String date = calendarPostRequestDto.getDate();
-        String month = calendarPostRequestDto.getMonth();
         String date = calendarPostRequestDto.getDate();
 
         List<User> user = userRepository.findAllByUserID(userID);
@@ -43,27 +42,27 @@ public class CalendarController {
             return "error";
         }
 
-        /*
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime calendarDate = LocalDateTime.parse(date, formatter);
-        */
 
         Calendar calendar = Calendar.builder().user(user.get(0)).drinks(drinks.get(0))
-                .month(month).date(date).build();
+                        .date(calendarDate).build();
 
         calendarRepository.save(calendar);
         return "success";
     }
 
     @GetMapping("v1/calendar")
-    public List<Calendar> getParameters(@RequestParam Long userID, @RequestParam String month) {
+    public List<Calendar> getParameters(@RequestParam Long userID, @RequestParam Integer month) {
         List<User> user = userRepository.findAllByUserID(userID);
 
         if(user.size()!=0) {
-            List<Calendar> calendarList = calendarRepository.findAllByUserAndMonth(user.get(0),month);
+            LocalDateTime startDate = LocalDateTime.of(2022, month, 1 ,0,0,0);
+            LocalDateTime endDate = startDate.plusMonths(1).minusDays(1);
+            List<Calendar> calendarList = calendarRepository.findAllByUserAndDateBetween(user.get(0),startDate, endDate);
             return calendarList;
         }
-        return new ArrayList<Calendar>();
+        return new ArrayList<>();
     }
 
     }

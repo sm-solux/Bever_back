@@ -8,5 +8,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
-    List<Calendar> findAllByUserAndMonth(User user, String month);
- }
+    List<Calendar> findAllByUserAndDateBetween(User user, LocalDateTime start, LocalDateTime end);
+}
