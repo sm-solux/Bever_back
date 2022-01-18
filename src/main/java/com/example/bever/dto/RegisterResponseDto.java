@@ -1,10 +1,13 @@
 package com.example.bever.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class RegisterResponseDto {
     private Long userID;
+    private String alreadyExist;
 }

@@ -4,6 +4,7 @@ import com.example.bever.domain.Drinks;
 import com.example.bever.domain.User;
 import com.example.bever.domain.UserRecipe;
 import com.example.bever.dto.RecipePostRequestDto;
+import com.example.bever.dto.RecipeSaveRequestDto;
 import com.example.bever.repository.DrinksRepository;
 import com.example.bever.repository.RecipeRepository;
 import com.example.bever.repository.UserRepository;
