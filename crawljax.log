@@ -1,0 +1,141 @@
+19:36:33.265 [restartedMain] INFO  com.example.bever.BeverApplication (55) - Starting BeverApplication using Java 11.0.11 on Eugeneui-MacBookPro.local with PID 51795 (/Users/eugenehwang/Spring Project/target/classes started by eugenehwang in /Users/eugenehwang/Spring Project)
+19:36:33.268 [restartedMain] INFO  com.example.bever.BeverApplication (635) - No active profile set, falling back to default profiles: default
+19:36:33.300 [restartedMain] INFO  o.s.boot.devtools.restart.ChangeableUrls (255) - The Class-Path manifest attribute in /Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-platform-3.4.3-1.4.3.jar referenced one or more files that do not exist: file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-linux-x86.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-linux-x86_64.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-linux-armhf.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-linux-ppc64le.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-macosx-x86_64.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-windows-x86.jar,file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv-platform/3.4.3-1.4.3/opencv-windows-x86_64.jar
+19:36:33.301 [restartedMain] INFO  o.s.boot.devtools.restart.ChangeableUrls (255) - The Class-Path manifest attribute in /Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv/3.4.3-1.4.3/opencv-3.4.3-1.4.3.jar referenced one or more files that do not exist: file:/Users/eugenehwang/.m2/repository/org/bytedeco/javacpp-presets/opencv/3.4.3-1.4.3/javacpp.jar
+19:36:33.302 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor (255) - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+19:36:33.302 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor (255) - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+19:36:33.815 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate (132) - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:36:33.858 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate (201) - Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interfaces.
+19:36:34.291 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer (108) - Tomcat initialized with port(s): 8080 (http)
+19:36:34.306 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol (173) - Initializing ProtocolHandler ["http-nio-8080"]
+19:36:34.307 [restartedMain] INFO  org.apache.catalina.core.StandardService (173) - Starting service [Tomcat]
+19:36:34.307 [restartedMain] INFO  org.apache.catalina.core.StandardEngine (173) - Starting Servlet engine: [Apache Tomcat/9.0.55]
+19:36:34.371 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/] (173) - Initializing Spring embedded WebApplicationContext
+19:36:34.371 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext (290) - Root WebApplicationContext: initialization completed in 1069 ms
+19:36:34.504 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper (31) - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:36:34.541 [restartedMain] INFO  org.hibernate.Version (44) - HHH000412: Hibernate ORM core version 5.6.1.Final
+19:36:34.666 [restartedMain] INFO  org.hibernate.annotations.common.Version (56) - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+19:36:34.747 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource (110) - HikariPool-1 - Starting...
+19:36:35.928 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource (123) - HikariPool-1 - Start completed.
+19:36:35.943 [restartedMain] INFO  org.hibernate.dialect.Dialect (175) - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+19:36:36.414 [restartedMain] INFO  o.h.e.t.j.p.internal.JtaPlatformInitiator (52) - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+19:36:36.425 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean (437) - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:36:36.748 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration (219) - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:36:37.070 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer (58) - LiveReload server is running on port 35729
+19:36:37.088 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol (173) - Starting ProtocolHandler ["http-nio-8080"]
+19:36:37.112 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer (220) - Tomcat started on port(s): 8080 (http) with context path ''
+19:36:37.123 [restartedMain] INFO  com.example.bever.BeverApplication (61) - Started BeverApplication in 4.074 seconds (JVM running for 9.753)
+19:36:37.473 [http-nio-8080-exec-2] INFO  o.a.c.c.ContainerBase.[Tomcat].[localhost].[/] (173) - Initializing Spring DispatcherServlet 'dispatcherServlet'
+19:36:37.473 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet (525) - Initializing Servlet 'dispatcherServlet'
+19:36:37.474 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet (547) - Completed initialization in 1 ms
+19:36:38.945 [http-nio-8080-exec-2] INFO  com.crawljax.core.plugin.Plugins (92) - Loaded Our example plugin as a OnNewStatePlugin
+19:36:39.144 [http-nio-8080-exec-2] INFO  io.github.bonigarcia.wdm.WebDriverManager (966) - Reading https://api.github.com/repos/mozilla/geckodriver/releases to seek geckodriver
+19:36:39.724 [http-nio-8080-exec-2] INFO  io.github.bonigarcia.wdm.WebDriverManager (807) - Latest version of geckodriver is 0.30.0
+19:36:39.729 [http-nio-8080-exec-2] INFO  io.github.bonigarcia.wdm.Downloader (125) - Downloading https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-macos.tar.gz
+19:36:42.045 [http-nio-8080-exec-2] INFO  io.github.bonigarcia.wdm.Downloader (180) - Extracting binary from compressed file geckodriver-v0.30.0-macos.tar.gz
+19:36:42.120 [http-nio-8080-exec-2] WARN  org.rauschig.jarchivelib.FileModeMapper (121) - Could not set file permissions of /var/folders/z2/8d46_14s157f9353v8d6xhww0000gn/T/11131348068213842320/geckodriver. Exception was: null
+19:36:42.127 [http-nio-8080-exec-2] INFO  io.github.bonigarcia.wdm.WebDriverManager (939) - Exporting webdriver.gecko.driver as /Users/eugenehwang/.m2/repository/webdriver/geckodriver/macos/0.30.0/geckodriver
+19:36:42.214 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet] (175) - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) Error in custom provider, org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed. OS appears to be: MAC
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Eugeneui-MacBookPro.local', ip: 'fe80:0:0:0:4c4:c273:7af8:73fc%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '11.0.11'
+Driver info: driver.version: FirefoxDriver
+  while locating com.crawljax.browser.WebDriverBrowserBuilder
+  while locating com.crawljax.browser.EmbeddedBrowser
+    for the 1st parameter of com.crawljax.core.CrawlerContext.<init>(CrawlerContext.java:33)
+  while locating com.crawljax.core.CrawlerContext
+    for the 1st parameter of com.crawljax.core.Crawler.<init>(Crawler.java:69)
+  while locating com.crawljax.core.Crawler
+    for the 3rd parameter of com.crawljax.core.CrawlTaskConsumer.<init>(CrawlTaskConsumer.java:28)
+  while locating com.crawljax.core.CrawlTaskConsumer
+
+1 error] with root cause
+org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed. OS appears to be: MAC
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Eugeneui-MacBookPro.local', ip: 'fe80:0:0:0:4c4:c273:7af8:73fc%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '11.0.11'
+Driver info: driver.version: FirefoxDriver
+	at org.openqa.selenium.firefox.FirefoxBinary.<init>(FirefoxBinary.java:100)
+	at java.base/java.util.Optional.orElseGet(Optional.java:369)
+	at org.openqa.selenium.firefox.FirefoxOptions.getBinary(FirefoxOptions.java:216)
+	at org.openqa.selenium.firefox.FirefoxDriver.toExecutor(FirefoxDriver.java:187)
+	at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:147)
+	at com.crawljax.browser.WebDriverBrowserBuilder.newFirefoxBrowser(WebDriverBrowserBuilder.java:145)
+	at com.crawljax.browser.WebDriverBrowserBuilder.get(WebDriverBrowserBuilder.java:68)
+	at com.crawljax.browser.WebDriverBrowserBuilder.get(WebDriverBrowserBuilder.java:27)
+	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:85)
+	at com.google.inject.internal.BoundProviderFactory.provision(BoundProviderFactory.java:77)
+	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:59)
+	at com.google.inject.internal.BoundProviderFactory.get(BoundProviderFactory.java:61)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:42)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:65)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:113)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:91)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:306)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:42)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:65)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:113)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:91)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:306)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:42)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:65)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:113)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:91)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:306)
+	at com.google.inject.internal.InjectorImpl$1.get(InjectorImpl.java:1050)
+	at com.crawljax.core.CrawlController.call(CrawlController.java:68)
+	at com.crawljax.core.CrawljaxRunner.call(CrawljaxRunner.java:59)
+	at com.example.bever.controller.CrawlingController.crawling(CrawlingController.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+19:43:51.947 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean (651) - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:43:51.950 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource (350) - HikariPool-1 - Shutdown initiated...
+19:43:52.434 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource (352) - HikariPool-1 - Shutdown completed.

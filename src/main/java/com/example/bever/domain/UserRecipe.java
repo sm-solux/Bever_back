@@ -4,6 +4,7 @@ package com.example.bever.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.ConnectionBuilder;
 import java.time.LocalDateTime;
 
 @Getter
