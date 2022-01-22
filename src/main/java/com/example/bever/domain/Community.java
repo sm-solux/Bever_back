@@ -17,7 +17,7 @@ public class Community {
     @Column(name = "postID")
     private Long postID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "userID")
     private User user;
 
