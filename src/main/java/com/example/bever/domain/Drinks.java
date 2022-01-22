@@ -16,8 +16,7 @@ public class Drinks {
     @Column(name = "drinkID")
     private Long drinkID;
 
-    @ManyToOne()
-    @JoinColumn(name = "drinkOwnerID")
+    @Enumerated(EnumType.STRING)
     private DrinkOwners drinkOwners;
 
     @Column

@@ -5,17 +5,12 @@ import lombok.*;
 import javax.persistence.*;
 
 @Getter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
-@Table(name = "DrinkOwners")
-public class DrinkOwners {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "drinkOwnerID")
-    private Long drinkOwnerID;
+@RequiredArgsConstructor
+public enum DrinkOwners {
 
-    @Column
-    private String drinkOwnerName;
+    STARBUCKS("STARBUCKS", "스타벅스"),
+    TWOSOME("TWOSOME","투썸플레이스");
+
+    private final String key;
+    private final String title;
 }

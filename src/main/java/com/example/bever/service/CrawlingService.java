@@ -1,5 +1,7 @@
 package com.example.bever.service;
 
+import com.example.bever.domain.Drinks;
+import com.example.bever.repository.DrinksRepository;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +11,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -23,18 +27,26 @@ public class CrawlingService {
     private static final String STARBUCKS_URL = "https://www.starbucks.co.kr/menu/drink_list.do";
     private static final String TWOSOME_URL = "https://mo.twosome.co.kr/mn/menuInfoList.do?grtCd=1&pMidCd=0";
 
-    public void do_crawl(){
+    private final DrinksRepository drinksRepository;
+
+    public Map<String,Map<String,List<String>>> do_crawl(){
+        Map<String,Map<String,List<String>>> menulists = new LinkedHashMap<>();
+
         WebDriver driver = setUp();
 
-//        List<String> STARBUCKS_menulist = crawl_STARBUCKS(driver);
+        Map<String,List<String>> STARBUCKS_menulist = crawl_STARBUCKS(driver);
 
 
-        List<String> TWOSOME_menulist = crawl_TWOSOME(driver);
+        Map<String,List<String>> TWOSOME_menulist = crawl_TWOSOME(driver);
 
+
+        menulists.put("STARBUCKS",STARBUCKS_menulist);
+        menulists.put("TWOSOME",TWOSOME_menulist);
 
         driver.close();
         driver.quit();
 
+        return menulists;
     }
 
     private WebDriver setUp(){
@@ -54,10 +66,10 @@ public class CrawlingService {
         return driver;
     }
 
-    private List<String> crawl_STARBUCKS(WebDriver driver){
+    private Map<String,List<String>> crawl_STARBUCKS(WebDriver driver){
+
+
         //요청할 URL을 get()에 전달하면 응답된 페이지를 브라우저를 통해 확인할 수 있다.
-
-
         driver.get(STARBUCKS_URL);
         try {
             //브라우저가 실행되는 시간을 기다려준다.
@@ -71,16 +83,24 @@ public class CrawlingService {
         //해당 URL에서 더 보기 버튼을 객체로 가져온다
 
         List<String> menu_list = new LinkedList<>();
+        List<String> img_list = new LinkedList<>();
 
         for(WebElement el:driver.findElements(By.className("menuDataSet"))){
             menu_list.add(el.findElement(By.cssSelector("dd")).getText());
+            img_list.add(el.findElement(By.cssSelector("img")).getAttribute("src"));
         }
-        return menu_list;
+
+        Map<String,List<String>> list = new LinkedHashMap<>();
+        list.put("menu",menu_list);
+        list.put("img", img_list);
+        return list;
     }
 
-    private List<String> crawl_TWOSOME(WebDriver driver){
+
+    private Map<String,List<String>> crawl_TWOSOME(WebDriver driver){
 
         List<String> menu_list = new LinkedList<>();
+        List<String> img_list = new LinkedList<>();
 
         for( int i = 1 ; i < 4 ; i++ ) {
             // 요청할 URL을 get()에 전달하면 응답된 페이지를 브라우저를 통해 확인할 수 있다.
@@ -98,14 +118,28 @@ public class CrawlingService {
                 e.printStackTrace();
             }
 
+            // <ul class="ui-goods-list-default">
+            //   <li>...제품정보...</li>
+            //   <li>...제품정보...</li>
+            // </ul>
+            WebElement menuUL = driver.findElement(By.className("ui-goods-list-default"));
+            for (WebElement el : menuUL.findElements(By.cssSelector("li"))) {
+                try {
+                    //<p class="menu-title">아메리카노</p>와 같이 p 태그안의 텍스트로 된 메뉴명을 가져온다.
+                    menu_list.add(el.findElement(By.className("menu-title")).getText());
+                    //<img src="이미지주소" alt="치즈크럼블딸기쉐이크"> 안의 src 속성값을 가져온다.
+                    img_list.add(el.findElement(By.cssSelector("img")).getAttribute("src"));
+                }catch (Exception e){
 
-            //<p class="menu-title">아메리카노</p>와 같이 p 태그안의 텍스트로 된 메뉴명을 가져온다.
-            for (WebElement el : driver.findElements(By.className("menu-title"))) {
-                menu_list.add(el.getText());
+                }
             }
         }
 
-        return menu_list;
+        Map<String,List<String>> list = new LinkedHashMap<>();
+        list.put("menu",menu_list);
+        list.put("img", img_list);
+
+        return list;
 
     }
 }
