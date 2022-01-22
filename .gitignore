@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/resources/static/idyllic-aspect-328219-5ec2b12c674f.json
 
 ### STS ###
 .apt_generated
