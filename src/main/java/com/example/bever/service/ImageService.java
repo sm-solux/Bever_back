@@ -23,7 +23,7 @@ public class ImageService {
     public String uploadImage(MultipartFile file) throws IOException {
         // gcp cloud storage 버킷에 파일 업로드
         try {
-            String keyFileName = "static/idyllic-aspect-328219-5ec2b12c674f.json";
+            String keyFileName = "static/idyllic-aspect-328219-d1ef40ef657c.json";
             InputStream keyfile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
             System.out.println("====ggg1====");
             Storage storage = StorageOptions.newBuilder()
@@ -38,10 +38,11 @@ public class ImageService {
 
 
             BlobInfo blobInfo = storage.create(
-                    BlobInfo.newBuilder("plket", objectName).build(), //get original file name
+                    BlobInfo.newBuilder("beverstore", objectName).build(), //get original file name
                     file.getBytes() // the file
             );
             System.out.println(blobInfo.getMediaLink());
+
             return blobInfo.getMediaLink();
         } catch (IllegalStateException e) {
             throw new RuntimeException(e);

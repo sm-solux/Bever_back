@@ -1,13 +1,17 @@
 package com.example.bever.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
-@Builder
+@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
 public class RegisterRequestDto {
 
     private String email;
 
     private String pw;
+
+    private String nickname;
 }

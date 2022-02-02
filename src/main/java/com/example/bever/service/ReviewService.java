@@ -1,5 +1,6 @@
 package com.example.bever.service;
 
+import com.example.bever.domain.DrinkOwners;
 import com.example.bever.domain.Review;
 import com.example.bever.dto.ReviewRequestDto;
 import com.example.bever.repository.ReviewRepository;
@@ -19,7 +20,16 @@ public class ReviewService {
     private final UserRepository userRepository;
 
     public void saveReviewPost(ReviewRequestDto reviewRequestDto, String imagelink){
-
+        System.out.println(reviewRequestDto.getDrinkOwners());
+        DrinkOwners drinkOwners =DrinkOwners.STARBUCKS ;
+        if(reviewRequestDto.getDrinkOwners().equals(DrinkOwners.STARBUCKS.getKey())){
+            drinkOwners = DrinkOwners.STARBUCKS;
+        }
+        if(reviewRequestDto.getDrinkOwners().equals(DrinkOwners.TWOSOME.getKey())){
+            drinkOwners = DrinkOwners.TWOSOME;
+        }
+        System.out.println(reviewRequestDto.getContent());
+        System.out.println(reviewRequestDto.getDrinkOwners());
         Review review = Review.builder()
                 .content(reviewRequestDto.getContent())
                 .date(LocalDateTime.now())
@@ -27,6 +37,7 @@ public class ReviewService {
                 .rate(reviewRequestDto.getRate())
                 .title(reviewRequestDto.getTitle())
                 .user(userRepository.findAllByUserID(reviewRequestDto.getWriter()).get(0))
+                .drinkOwners(drinkOwners)
                 .build();
         reviewRepository.save(review);
     }

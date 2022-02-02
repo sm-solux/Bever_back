@@ -36,5 +36,8 @@ public class Review {
     @Column(name = "rate")
     private Double rate;
 
+    @Enumerated(EnumType.STRING)
+    private DrinkOwners drinkOwners;
+
 
 }

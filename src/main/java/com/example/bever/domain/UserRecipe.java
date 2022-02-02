@@ -39,4 +39,7 @@ public class UserRecipe {
     @Column
     private LocalDateTime recipeDate;
 
+
+
+
 }
