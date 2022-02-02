@@ -7,8 +7,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RegisterResponseDto {
+public class LoginResponseDto {
     private Long userID;
-    private String alreadyExist;
+    private String pwWrong;
+    private String emailNotExist;
     private String nickname;
 }

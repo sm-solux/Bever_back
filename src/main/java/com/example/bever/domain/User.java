@@ -22,4 +22,12 @@ public class User {
 
     @Column(nullable = false)
     private String userPw;
+
+    @Column
+    private String nickname;
+
+    public User(Long userID, String nickname){
+        this.nickname = nickname;
+        this.userID = userID;
+    }
 }

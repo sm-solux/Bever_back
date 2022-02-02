@@ -3,6 +3,7 @@ package com.example.bever.controller;
 import com.example.bever.domain.Drinks;
 import com.example.bever.domain.User;
 import com.example.bever.domain.UserRecipe;
+import com.example.bever.dto.RecipeListResponseDto;
 import com.example.bever.dto.RecipePostRequestDto;
 import com.example.bever.dto.RecipeSaveRequestDto;
 import com.example.bever.repository.DrinksRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -54,9 +56,9 @@ public class RecipeController {
     }
 
     @GetMapping("v1/recipe/list")
-    public List<UserRecipe> list() {
-        List<UserRecipe> recipeList = recipeRepository.findAll();
-
+    public List<RecipeListResponseDto> list() {
+        List<RecipeListResponseDto> recipeList = recipeRepository.getAll();
+//        List<UserRecipe> recipeList = recipeRepository.
         return recipeList;
     }
 }
