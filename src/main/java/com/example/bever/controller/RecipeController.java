@@ -39,7 +39,7 @@ public class RecipeController {
 
         List<Drinks> drink = drinksRepository.findByDrinkID(drinkID);
         List<User> user = userRepository.findAllByUserID(userID);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
         if(drink.size()==0) {
             return "fail";

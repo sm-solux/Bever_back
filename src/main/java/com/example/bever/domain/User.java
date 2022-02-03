@@ -17,10 +17,8 @@ public class User {
     @Column(name = "userID")
     private Long userID;
 
-    @Column(nullable = false)
     private String userEmail;
 
-    @Column(nullable = false)
     private String userPw;
 
     @Column

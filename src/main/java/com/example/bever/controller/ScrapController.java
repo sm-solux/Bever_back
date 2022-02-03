@@ -3,7 +3,7 @@ package com.example.bever.controller;
 import com.example.bever.domain.Scrap;
 import com.example.bever.domain.User;
 import com.example.bever.domain.UserRecipe;
-import com.example.bever.dto.ScrapSaveRepository;
+import com.example.bever.dto.ScrapPostRequestDto;
 import com.example.bever.repository.RecipeRepository;
 import com.example.bever.repository.ScrapRepository;
 import com.example.bever.repository.UserRepository;
@@ -21,9 +21,9 @@ public class ScrapController {
     private final RecipeRepository recipeRepository;
 
     @PostMapping("v1/scrap/post")
-    public String post(@RequestBody ScrapSaveRepository scrapSaveRepository) {
-        Long userID = scrapSaveRepository.getUserID(); //UserRepository에서 ID로 User 가져오기
-        Long recipeID = scrapSaveRepository.getRecipeID();
+    public String post(@RequestBody ScrapPostRequestDto scrapPostRepository) {
+        Long userID = scrapPostRepository.getUserID();
+        Long recipeID = scrapPostRepository.getRecipeID();
 
         List<User> user = userRepository.findAllByUserID(userID);
         List<UserRecipe> userRecipe = recipeRepository.findByRecipeID(recipeID);
@@ -45,12 +45,12 @@ public class ScrapController {
         return "success";
     }
 
-    @GetMapping("v1/scrap/{userID}")
-    public List<UserRecipe> getParameters(@RequestParam(name="userID") Long userID) {
+    @GetMapping("v1/scrap")
+    public List<Scrap> getParameters(@RequestParam(name = "userID") Long userID) {
         List<User> user = userRepository.findAllByUserID(userID);
 
-        List<UserRecipe> userRecipes =  scrapRepository.findAllByUser(user.get(0));
+        List<Scrap> scrapList =  scrapRepository.findAllByUser(user.get(0));
 
-        return userRecipes;
+        return scrapList;
     }
 }

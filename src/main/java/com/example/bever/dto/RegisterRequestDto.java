@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 //@NoArgsConstructor
 //@AllArgsConstructor
-//@Builder
+@Builder
 public class RegisterRequestDto {
 
     private String email;

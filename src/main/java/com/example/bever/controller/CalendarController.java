@@ -8,9 +8,9 @@ import com.example.bever.repository.CalendarRepository;
 import com.example.bever.repository.DrinksRepository;
 import com.example.bever.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ public class CalendarController {
     private final DrinksRepository drinksRepository;
 
     @PostMapping("v1/calendar/post")
-    public String post(@RequestBody CalendarPostRequestDto calendarPostRequestDto) {
+    public String post(@RequestBody(required = false) CalendarPostRequestDto calendarPostRequestDto) {
         Long userID = calendarPostRequestDto.getUserID();
-        Long drinkID = calendarPostRequestDto.getDrinkID();
+        Long drinkID = calendarPostRequestDto.getDrinkID().get(0);
         String date = calendarPostRequestDto.getDate();
 
         List<User> user = userRepository.findAllByUserID(userID);
@@ -59,7 +59,7 @@ public class CalendarController {
         if(user.size()!=0) {
             LocalDateTime startDate = LocalDateTime.of(2022, month, 1 ,0,0,0);
             LocalDateTime endDate = startDate.plusMonths(1).minusDays(1);
-            List<Calendar> calendarList = calendarRepository.findAllByUserAndDateBetween(user.get(0),startDate, endDate);
+            List<Calendar> calendarList = calendarRepository.findAllByUserAndDateBetween(user.get(0),startDate, endDate, Sort.by("date"));
             return calendarList;
         }
         return new ArrayList<>();
