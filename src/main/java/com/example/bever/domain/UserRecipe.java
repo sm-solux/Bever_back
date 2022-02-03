@@ -40,6 +40,8 @@ public class UserRecipe {
     private LocalDateTime recipeDate;
 
 
+    @Column
+    private Long scrapCount = Long.valueOf(0);
 
 
 }

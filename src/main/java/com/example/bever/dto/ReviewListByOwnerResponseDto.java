@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 public class ReviewListByOwnerResponseDto {
 
-    private List<Review> list;
+    private List<ReviewListResponseDto> list;
     private DrinkOwners owners;
 
 }

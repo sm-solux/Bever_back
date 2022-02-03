@@ -38,6 +38,7 @@ public class ScrapController {
             return "fail";
         }
 
+        recipeRepository.updateScrapCount(userRecipe.get(0).getRecipeID());
 
         Scrap scrap = Scrap.builder().user(user.get(0)).userRecipe(userRecipe.get(0)).build();
 

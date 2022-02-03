@@ -21,6 +21,10 @@ public class Review {
     @JoinColumn(name = "userID")
     private User user;
 
+    @ManyToOne()
+    @JoinColumn(name = "drinkID")
+    private Drinks drinks;
+
     @Column(name = "imageLink")
     private String imageLink;
 
@@ -38,6 +42,8 @@ public class Review {
 
     @Enumerated(EnumType.STRING)
     private DrinkOwners drinkOwners;
+
+
 
 
 }

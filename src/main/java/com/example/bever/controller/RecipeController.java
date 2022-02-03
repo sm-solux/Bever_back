@@ -5,18 +5,19 @@ import com.example.bever.domain.User;
 import com.example.bever.domain.UserRecipe;
 import com.example.bever.dto.RecipeListResponseDto;
 import com.example.bever.dto.RecipePostRequestDto;
-import com.example.bever.dto.RecipeSaveRequestDto;
 import com.example.bever.repository.DrinksRepository;
 import com.example.bever.repository.RecipeRepository;
 import com.example.bever.repository.UserRepository;
 
+import com.example.bever.service.ImageService;
+import com.example.bever.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,34 +26,26 @@ public class RecipeController {
     private final RecipeRepository recipeRepository;
     private final UserRepository userRepository;
     private final DrinksRepository drinksRepository;
+    private final ImageService imageService;
+    private final RecipeService recipeService;
 
     @PostMapping("v1/recipe/post")
-    public String post(@RequestBody RecipePostRequestDto recipePostRequestDto) {
-        Long drinkID = recipePostRequestDto.getDrinkID();
-        //UserRepository 에서 id로 User 검색해서 user에 넣기
-        Long userID = recipePostRequestDto.getWriter();
-        String recipeName =  recipePostRequestDto.getTitle();
-        String recipeContent = recipePostRequestDto.getContent();
-        String imageLink = recipePostRequestDto.getImageLink();
-        String time = recipePostRequestDto.getDate();
-        //null값 체크-list의 길이가 0이면 return "error";
+    public String post( RecipePostRequestDto recipePostRequestDto) throws IOException {
 
-        List<Drinks> drink = drinksRepository.findByDrinkID(drinkID);
-        List<User> user = userRepository.findAllByUserID(userID);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
-        if(drink.size()==0) {
-            return "fail";
-        }
-        if(user.size()==0) {
-            return "fail";
+        // 이미지 파일을 구글 버킷에 전송해 저장한 후 이미지 링크를 받아온다.
+        String imagelink ="";
+        if(!recipePostRequestDto.getFile().isEmpty())
+            imagelink =imageService.uploadImage(recipePostRequestDto.getFile());
+
+        // 생성된 이미지 링크와 함께 Post를 저장한다.
+        try {
+            recipeService.saveRecipePost(recipePostRequestDto, imagelink);
+            return "Success";
+        }catch (Exception e){
+            System.out.println(e);
+            return "Fail to Save";
         }
 
-        UserRecipe recipe = UserRecipe.builder().drinks(drink.get(0)).user(user.get(0)).recipeName(recipeName)
-                .recipeContent(recipeContent).imageLink(imageLink).recipeDate(dateTime).build();
-
-        recipeRepository.save(recipe);
-        return "success";
     }
 
     @GetMapping("v1/recipe/list")
@@ -61,4 +54,6 @@ public class RecipeController {
 //        List<UserRecipe> recipeList = recipeRepository.
         return recipeList;
     }
+
+
 }
