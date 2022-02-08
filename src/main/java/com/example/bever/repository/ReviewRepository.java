@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review,Long> {
 
-    @Query(value = "select new com.example.bever.dto.ReviewListResponseDto(r) from Review r where r.drinkOwners=?1")
+    @Query(value = "select new com.example.bever.dto.ReviewListResponseDto(r) from Review r where r.drinkOwners=?1 order by r.date")
     List<ReviewListResponseDto> findAllByDrinkOwners(DrinkOwners drinkOwners);
 }

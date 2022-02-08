@@ -14,13 +14,17 @@ public interface RecipeRepository extends JpaRepository<UserRecipe, Long> {
     List<UserRecipe> findAll();
     List<UserRecipe> findByRecipeID(Long recipeID);
 
-    @Query(value = "select new com.example.bever.dto.RecipeListResponseDto(r) from UserRecipe r")
+    @Query(value = "select new com.example.bever.dto.RecipeListResponseDto(r) from UserRecipe r order by r.recipeDate")
     List<RecipeListResponseDto> getAll();
 
     @Transactional
     @Modifying
     @Query(value = "update UserRecipe u set u.scrapCount=u.scrapCount+1 where u.recipeID=?1")
-    void updateScrapCount(Long userRecipeID);
+    void updateScrapCountPlus(Long userRecipeID);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update UserRecipe u set u.scrapCount=u.scrapCount-1 where u.recipeID=?1")
+    void updateScrapCountMinus(Long userRecipeID);
 }
 

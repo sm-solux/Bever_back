@@ -4,6 +4,7 @@ import com.example.bever.domain.Drinks;
 import com.example.bever.domain.User;
 import com.example.bever.domain.UserRecipe;
 import com.example.bever.dto.RecipeListResponseDto;
+import com.example.bever.dto.RecipeListWithScrapListDto;
 import com.example.bever.dto.RecipePostRequestDto;
 import com.example.bever.repository.DrinksRepository;
 import com.example.bever.repository.RecipeRepository;
@@ -11,12 +12,14 @@ import com.example.bever.repository.UserRepository;
 
 import com.example.bever.service.ImageService;
 import com.example.bever.service.RecipeService;
+import com.example.bever.service.ScrapService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -28,6 +31,7 @@ public class RecipeController {
     private final DrinksRepository drinksRepository;
     private final ImageService imageService;
     private final RecipeService recipeService;
+    private final ScrapService scrapService;
 
     @PostMapping("v1/recipe/post")
     public String post( RecipePostRequestDto recipePostRequestDto) throws IOException {
@@ -48,11 +52,15 @@ public class RecipeController {
 
     }
 
-    @GetMapping("v1/recipe/list")
-    public List<RecipeListResponseDto> list() {
-        List<RecipeListResponseDto> recipeList = recipeRepository.getAll();
-//        List<UserRecipe> recipeList = recipeRepository.
-        return recipeList;
+    @GetMapping("v1/recipe/list/{userID}")
+    public RecipeListWithScrapListDto list(@PathVariable Long userID) {
+        RecipeListWithScrapListDto recipeListWithScrapListDtos = new RecipeListWithScrapListDto();
+
+        recipeListWithScrapListDtos.setRecipeList(recipeRepository.getAll());
+
+        recipeListWithScrapListDtos.setUserScrapList( scrapService.returnScrapCount(userID));
+
+        return recipeListWithScrapListDtos;
     }
 
 

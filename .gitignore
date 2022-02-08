@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 .DS_Store
 src/main/resources/static/idyllic-aspect-328219-d1ef40ef657c.json
+static/idyllic-aspect-328219-d1ef40ef657c.json
 
 ### STS ###
 .apt_generated

@@ -3,10 +3,12 @@ package com.example.bever.controller;
 import com.example.bever.domain.Scrap;
 import com.example.bever.domain.User;
 import com.example.bever.domain.UserRecipe;
+import com.example.bever.dto.RecipeListResponseDto;
 import com.example.bever.dto.ScrapPostRequestDto;
 import com.example.bever.repository.RecipeRepository;
 import com.example.bever.repository.ScrapRepository;
 import com.example.bever.repository.UserRepository;
+import com.example.bever.service.ScrapService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,39 +21,24 @@ public class ScrapController {
     private final ScrapRepository scrapRepository;
     private final UserRepository userRepository;
     private final RecipeRepository recipeRepository;
+    private final ScrapService scrapService;
 
     @PostMapping("v1/scrap/post")
     public String post(@RequestBody ScrapPostRequestDto scrapPostRepository) {
-        Long userID = scrapPostRepository.getUserID();
-        Long recipeID = scrapPostRepository.getRecipeID();
 
-        List<User> user = userRepository.findAllByUserID(userID);
-        List<UserRecipe> userRecipe = recipeRepository.findByRecipeID(recipeID);
-        if(user.size()==0) {
-            return "fail";
-        }
-        if(userRecipe.size()==0) {
-            return "fail";
-        }
-        List<Scrap> scrapList = scrapRepository.findAllByUserAndUserRecipe(user.get(0), userRecipe.get(0));
-        if(scrapList.size()!=0) { //이미 스크랩 했는지 확인
-            return "fail";
-        }
+        return scrapService.scrapping(scrapPostRepository,true);
 
-        recipeRepository.updateScrapCount(userRecipe.get(0).getRecipeID());
-
-        Scrap scrap = Scrap.builder().user(user.get(0)).userRecipe(userRecipe.get(0)).build();
-
-        scrapRepository.save(scrap);
-        return "success";
     }
 
-    @GetMapping("v1/scrap")
-    public List<Scrap> getParameters(@RequestParam(name = "userID") Long userID) {
+    @PostMapping("v1/scrap/unpost")
+    public String unpost(@RequestBody ScrapPostRequestDto scrapPostRepository){
+        return scrapService.scrapping(scrapPostRepository,false);
+    }
+
+    @PostMapping("v1/scrap/list/{userID}")
+    public List<RecipeListResponseDto> userScrapList(@PathVariable Long userID) {
         List<User> user = userRepository.findAllByUserID(userID);
 
-        List<Scrap> scrapList =  scrapRepository.findAllByUser(user.get(0));
-
-        return scrapList;
+        return scrapService.returnScrapRecipeList(user.get(0));
     }
 }
